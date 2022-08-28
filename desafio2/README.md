@@ -20,11 +20,14 @@ Implementar programa que contenga una clase llamada Contenedor que reciba el nom
     thumbnail: (url de la foto del producto)
 }
 `
-- Ejemplo de formato para el archivos productos.txt `[                                                                                                                                                     
+- Ejemplo de formato para el archivos productos.txt ```[                                                                                                                                                     
     {                                                                                                                                                    
       title: 'Escuadra',                                                                                                                                 
       price: 123.45,                                                                                                                                     
       thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png',                                     
       id: 1                                                                                                                                              
     }
-`
+```
+
+### PROYECTO
+Testear desde el archivo inde.js
