@@ -30,7 +30,7 @@ Implementar programa que contenga una clase llamada Contenedor que reciba el nom
       price: 123.45,                                                                                                                                     
       thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png',                                     
       id: 1                                                                                                                                              
-    }
+    },{}.{},...]
 ```
 
 ### PROYECTO
