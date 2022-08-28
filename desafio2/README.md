@@ -14,13 +14,17 @@ Implementar programa que contenga una clase llamada Contenedor que reciba el nom
 - Implementar el manejo de archivos con el módulo fs de node.js, utilizando promesas con async/await y manejo de errores.
 - Probar el módulo creando un contenedor de productos, que se guarde en el archivo: “productos.txt”
 - Incluir un llamado de prueba a cada método, y mostrando por pantalla según corresponda para verificar el correcto funcionamiento del módulo construído. 
-- El formato de cada producto será : `{
+- El formato de cada producto será : 
+```
+{
     title: (nombre del producto),
     price: (precio),
     thumbnail: (url de la foto del producto)
 }
-`
-- Ejemplo de formato para el archivos productos.txt ```[                                                                                                                                                     
+```
+- Ejemplo de formato para el archivos productos.txt 
+```
+[                                                                                                                                                     
     {                                                                                                                                                    
       title: 'Escuadra',                                                                                                                                 
       price: 123.45,                                                                                                                                     
