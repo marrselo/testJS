@@ -1,0 +1,21 @@
+[  
+  {
+     "title": "Calculadora", 
+     "price": 234.56,
+     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png", 
+     "id" : 1
+    },
+    {"title": "Lapicero", 
+     "price": 24.00,
+     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png", 
+     "id" : 2},
+    {"title": "Borrador", 
+     "price": 48.50,
+     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png", 
+     "id" : 3},
+    {"title": "Compas", 
+     "price": 98.90,
+     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png", 
+     "id" : 4
+      
+    }]
