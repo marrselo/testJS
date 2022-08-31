@@ -3,29 +3,28 @@ const fs = require('fs');
 class Container {
     
     constructor(file){
-        this.dataFile = this.fsRead(file);
         this.rutaFile = `data/${file}`;        
     }
     //Guardar archivo
     async save(objectProduct){
 
-        const data =await this.dataFile;
-        const products = data;
-        console.log(products);
-        const id = products.length + 1;
-        objectProduct.id = id;
-        products.push(objectProduct);
-        const productsString = JSON.stringify(products);
-        await this.fsWrite(productsString);
-        //await fs.promises.writeFile(this.rutaFile,productsString);
-        return products;
-
+        try{
+            const products = await this.getAll();
+            const id = products.length + 1;
+            objectProduct.id = id;
+            products.push(objectProduct);
+            const productsString = JSON.stringify(products);
+            await fs.promises.writeFile(this.rutaFile,productsString);
+            return products;
+        }catch(error){
+            return error
+        }
     }
 
 
     //Traer objeto con id
     async getById(id){
-        const dataProduct  = await this.dataFile;
+        const dataProduct  = await this.getAll();
         const product = dataProduct.find((product) => product.id === id);
         if (product) {
             return product;
@@ -37,31 +36,19 @@ class Container {
 
     //devuelve arrya con objetos del archivo
     async getAll(){
-        try {
-            const dataProduct = await this.dataFile;
-            if(Object.entries(dataProduct).length===0){
-                return "No hay datos"
-            }else{
-                return dataProduct;
-            }
-            
-        }catch(error){
-            return error;
-        }
+
+        const dataFile = await fs.promises.readFile(this.rutaFile,"utf-8") || '[]';
+        const dataParse = JSON.parse(dataFile);
+        return dataParse;
+        
     }
 
     async getRandom(){
-        try {
-            const dataProduct = await this.dataFile;
-            if(Object.entries(dataProduct).length===0){
-                return "No hay datos"
-            }else{
-                return dataProduct;
-            }
-            
-        }catch(error){
-            return error;
-        }
+        const products = await this.getAll();
+        let randomId = Math.floor(Math.random() * 4 + 1);
+        let data = await this.getById(randomId);
+        return data;
+
     }
 
     //Elimina un objeto segun el id
@@ -70,7 +57,7 @@ class Container {
         if(idExist==`El producto con id ${id} no existe`){
             return `No se puede eliminar el  producto con id ${id}, no existe`;
         }else{
-            const dataProduct = await this.dataFile;
+            const dataProduct = await this.getAll();
             const dataFilter = dataProduct.filter((item) => item.id !== id);
             let productsString = JSON.stringify(dataFilter);
             await this.deleteAll();
@@ -86,18 +73,7 @@ class Container {
         return "se elimino toda la data";
     }
 
-    async fsRead(file) {
-        try {
-            const dataFile = await fs.promises.readFile(
-            `data/${file}`,
-            "utf-8"
-            );
-        const dataParse = JSON.parse(dataFile);
-            return dataParse;
-        } catch (error) {
-            console.log(error);
-        }
-    }
+
 
     async fsWrite(productsString){
         try{
@@ -108,13 +84,3 @@ class Container {
     }
 }
 module.exports = {Container};
-//const db = new Container("productos.json");
-// let obProduct = {title: 'Calculadora', 
-//     price: 234.56,
-//     thumbnail: 'https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png',                                          
-//     };
-//db.save(obProduct);
-//db.getAll().then((value)=>console.log(value));
-// db.getById(1).then((value) => console.log(value));
-// db.deleteById(3).then((value)=>console.log(value));
-//db.deleteAll().then((value)=>console.log(value));
